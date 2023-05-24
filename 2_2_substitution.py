@@ -47,6 +47,27 @@ result = chiffreCesar("ESIEA", 10)
 print(" Chiffre Cesar ".center(90,"*"))
 printSubstitutionResult(result)
 
+# 2.2.3 Substitution Simple
+def polySubstitution(word):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet2 = "qwertyuiopasdfghjklzxcvbnm"
+    word = word.lower()
+    encrypted = ""
+    steps = []
+    dec=0
+    for letter in word:
+        i = alphabet.index(letter)
+        j = (i + dec) % len(alphabet)
+        encrypted += alphabet2[j]
+        steps.append((letter, i, j, alphabet2[j]))
+        dec+=1
+    
+    return {"word": word, "encrypted": encrypted, "steps": steps}
+
+result = polySubstitution("AAAAA")
+print(" SUBSTITUTION POLYALPHABETIQUE ".center(90,"*"))
+printSubstitutionResult(result)
+
 print("*"*90)
 
 
