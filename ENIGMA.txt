@@ -1,0 +1,28 @@
+Le but:
+Simuler une partie d'énigma.
+
+Les étapes:
+Demander à l'utilisateur le décalage de base de chaque rotor
+Demander à l'utilisateur la lettre à chiffer
+Chiffrer la lettre comme suit:
+    1- une substitution miroire: A = A ou (A = B et B = A) - Le tableau de connexions
+    2- 3 substitutions simples - 3 rotors
+    3- 1 substitution miroire: A = B et B = A mais jamais A = A
+    4- 3 substitutions simple - 3 rotors en sens inverses
+    Suite à ces 4 étapes, le premier rotor tournera de 1. En passant de 26 à 1 il fera tourner le rotor à sa gauche de 1 aussi
+Afficher la lettre chiffrée
+Reprendre le processus en demandant la 2eme lettre...
+NB: Dans Enigma, pour la meme configuration si A est chiffrée en L, L sera chiffrée en A. Ceci est du au rotor reflecteur
+
+Détails technique suggérés:
+Une classe Encryptor qui prend comme paramètre de construction alpha2, alpha1 et decalage. Elle a aussi 3 méthodes: substitute, inverse (qui fait la substitution inverse) et incDec qui incrémente le décalage
+Une classe Reflector qui hérite de Encryptor et prend comme paramètre de construction une liste de tuple des lettres qui se substituent. 
+    Dans le constructeur, on arrangera les paires en sorte que A = X et X = a
+Une classe CnxTable qui hérite de Reflector. L'astuce est de passer à cette class uniquement 10 paires au lieu de 13
+Une classe Rotor qui hérite de Encryptor
+Une classe Enigma qui va initialiser les 3 rotors, le tableau de connexion et le réflecteur (chacun avec des paire ou un alpha2 différents)
+    La classe a aussi une méthode substitute qui 
+        -   prend en entrée une lettre 
+        -   la chiffre
+        -   incrémente le décalage des rotors (et donc gèrent ceux qui doivent être incrémentés)
+        -   retourne la lettre chiffrée
