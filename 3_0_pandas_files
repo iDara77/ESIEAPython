@@ -7,6 +7,9 @@ with open(CWD+"/mars_data_01.json") as f:
     contenu = f.read()
 contenuj = json.loads(contenu)
 print(contenuj, type(contenuj))
+with open(CWD+"/mars_data_01_cf.json","w") as f:
+    f.write(contenu)
 
 contenum = pd.read_json(CWD+"/mars_data_01.json")
 print(contenum, type(contenum))
+contenum.to_json(CWD+"/mars_data_01_cp.json")
