@@ -19,5 +19,14 @@ latitude, longitude = 41.882, -87.629
 
 inventory_temps.sort(key=lambda x: abs(latitude-x.latitude) + abs(longitude- x.longitude))
 
+
+with open(CWD+"/stations.txt", "r") as stations_file:
+    stations_txt = stations_file.read()
+    
+station_id = 'USC00110338'
+# parse stations
+Station = namedtuple("Station", ['station_id', 'latitude', 'longitude',
+     'elevation', 'state', 'name', 'start', 'end'])
+
 for line in inventory[:5]:
     print(line)
