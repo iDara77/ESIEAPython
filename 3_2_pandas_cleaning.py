@@ -22,4 +22,6 @@ temp.to_json(CWD+"/df_out.json")
 print(" TEMP DATA - Manipulating Cols ".center(50,"="))
 temp = pd.read_csv(CWD+"/temp_data_01.csv", na_values=['Missing'], header=0,
      names=range(18), usecols=range(4,18))
+temp[17] = temp[17].str.strip('%')
+temp[17] = pd.to_numeric(temp[17])
 print(temp)
