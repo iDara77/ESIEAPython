@@ -9,8 +9,7 @@ revenue = pd.read_csv(CWD+"/sales_revenue.csv")
 calls_revenue = pd.merge(calls, revenue, on=['Territory', 'Month'])
 calls_revenue['Call_Amount'] = calls_revenue.Amount/calls_revenue.Calls
 
-byMember = calls_revenue[['Team member', 'Month', 'Amount']].groupby(['Team member']).sum()
-byMemberMonth = calls_revenue[['Team member', 'Month', 'Calls']].groupby(['Team member','Month']).sum()
+byMember = calls_revenue[['Team member', 'Amount']].groupby(['Team member']).sum()
 
 byMonth = calls_revenue[['Month', 'Calls', 'Amount']].groupby(['Month']).sum()
 byMonth['Call_Amount'] = byMonth.Amount/byMonth.Calls
