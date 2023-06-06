@@ -38,5 +38,5 @@ print(station)
 r = requests.get('https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/{}.dly'.format(station.station_id))
 weather = r.text
 # save into a text file, so we won't need to fetch again
-with open('weather_{}.txt'.format(station.station_id), "w") as weather_file:
+with open(CWD+'/weather_{}.txt'.format(station.station_id), "w") as weather_file:
     weather_file.write(weather)
