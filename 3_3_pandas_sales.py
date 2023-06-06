@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 import os
 
 CWD = os.path.dirname(os.path.realpath(__file__))
@@ -22,3 +23,9 @@ print(calls_revenue.Calls.min())
 print(calls_revenue.Call_Amount.median())
 print(calls_revenue[calls_revenue.Call_Amount >= calls_revenue.Call_Amount.median()])
 print(calls_revenue[['Month', 'Calls', 'Amount']].groupby(['Month']).sum())
+print(calls_revenue[['Territory', 'Calls', 'Amount']].groupby(['Territory']).sum())
+
+byTerritory = calls_revenue[['Territory', 'Calls', 'Amount']].groupby(['Territory']).sum()
+plt.plot(byTerritory.Calls)
+plt.xlabel(byTerritory.index.values)
+plt.show()
