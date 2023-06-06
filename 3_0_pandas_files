@@ -1,0 +1,12 @@
+import json,os
+import pandas as pd
+
+CWD = os.path.dirname(os.path.realpath(__file__))
+
+with open(CWD+"mars_data_01.json") as f:
+    contenu = f.read()
+contenuj = json.loads(contenu)
+print(contenuj, type(contenuj))
+
+contenum = pd.read_json(CWD+"/mars_data_01.json")
+print(contenum, type(contenum))
