@@ -1,5 +1,5 @@
 from collections import namedtuple
-import os
+import os, requests
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
@@ -34,3 +34,9 @@ stations = [(x[0:11], float(x[12:20]), float(x[21:30]), float(x[31:37]), x[38:40
 station = Station(*stations[0] + (inventory_temps[0].start,
      inventory_temps[0].end))
 print(station)
+
+r = requests.get('https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/all/{}.dly'.format(station.station_id))
+weather = r.text
+# save into a text file, so we won't need to fetch again
+with open('weather_{}.txt'.format(station.station_id), "w") as weather_file:
+    weather_file.write(weather)
