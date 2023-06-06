@@ -15,3 +15,7 @@ edges = df[["one", "three"]]
 print(edges)
 print("Pandas quick op - add")
 print(edges.add(2))
+print("Pandas quick op - multiply")
+print(edges.multiply(2))
+print("Pandas quick op - mean")
+print(edges.mean())
