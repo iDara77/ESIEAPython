@@ -27,5 +27,6 @@ print(calls_revenue[['Territory', 'Calls', 'Amount']].groupby(['Territory']).sum
 
 byTerritory = calls_revenue[['Territory', 'Calls', 'Amount']].groupby(['Territory']).sum()
 plt.plot(byTerritory.Calls)
-plt.xlabel(byTerritory.index.values)
+plt.xlabel("Mois de l'année")
+plt.ylabel("Somme des appels")
 plt.show()
